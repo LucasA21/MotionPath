@@ -1,0 +1,60 @@
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'assets/extensions/simple-datatables/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/compiled/css/table-datatable.css' %}">
+{% endblock link %}
+
+<table class="table table-striped" id="table1">
+    <thead>
+        <tr>
+            {% if table_actions.active %}
+                <th>Acciones</th>
+            {% endif %}
+            {% for header in headers %}
+                <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+            <tr>
+                {% if table_actions.active %}
+                    <td>
+                        {% for action in table_actions.buttons %}
+                            <a 
+                                class="btn icon btn-sm btn-{{ action.color }}"
+                                {% if action.pk %}
+                                    href="{% url action.url pk=row.0 %}"
+                                {% else %}
+                                    href="{% url action.url %}"
+                                {% endif %} 
+                            >
+                                <i class="bi bi-{{ action.icon }}"></i>
+                            </a>
+                        {% endfor %}
+                    </td>
+                {% endif %}
+                {% for cell in row %}
+                    <td>
+                        {% if cell.0|length > 1 %}
+                            {% for item in cell %}
+                                {{ item }}
+                                {% if not forloop.last %}
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {{ cell }}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% block script %}
+    <script src="{% static 'assets/extensions/simple-datatables/umd/simple-datatables.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/simple-datatables.js' %}"></script>
+{% endblock script %}

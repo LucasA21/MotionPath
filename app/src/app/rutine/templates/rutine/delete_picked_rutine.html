@@ -1,0 +1,23 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Eliminar
+            </h3>
+        </div>
+        <div class="card-body">
+            <h5>¿Estás seguro que deseas dar de baja la rutina?</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger me-1 mb-1">Confirmar</button>
+                    <a href="{% url 'picked_rutine_detail' pk=object.pk %}" class="btn btn-secondary me-1 mb-1">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+{% endblock content %}

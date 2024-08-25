@@ -1,0 +1,18 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Listado
+            </h3>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'assign_rutine_create' %}" class="btn btn-success">Crear asignación de rutina</a>
+            <hr>
+            {% include 'components/datatable.html' %}
+        </div>
+    </div>
+    
+{% endblock content %}

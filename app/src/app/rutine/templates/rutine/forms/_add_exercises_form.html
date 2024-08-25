@@ -1,0 +1,27 @@
+{% extends "components/forms/form_base.html" %}
+{% load static %}
+
+{% block form %}
+
+<form class="form form-vertical" method="post">
+    {% csrf_token %}
+    <div class="form-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group{% if form.rutine_exercises.field.required %} mandatory{% endif %}">
+                    <label class="form-label" for="{{ form.rutine_exercises.id_for_label }}">{{form.rutine_exercises.label}}</label>
+                    {{ form.rutine_exercises }}
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-success me-1 mb-1">Agregar ejercicios</button>
+                <a href="{% url 'own_rutine_detail' pk=object.pk %}" class="btn btn-danger me-1 mb-1">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock form %}

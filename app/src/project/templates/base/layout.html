@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="shortcut icon" href="{% static 'images/icono.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/compiled/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/compiled/css/app-dark.css' %}">
+    {% block link %}{% endblock link %}
+</head>
+<body>
+    <script src="{% static 'assets/static/js/initTheme.js' %}"></script>
+    <div id="app">
+        {% include "base/sidebar.html" %}
+        <div id="main" class='layout-navbar navbar-fixed'>
+            <header>
+                {% include "base/navbar.html" %}
+            </header>
+            <main>
+                <div id="main-content">
+                    <div class="page-heading">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-12 col-md-6 order-md-1 order-last">
+                                    <h3>{{ title }}</h3>
+                                    <p class="text-subtitle text-muted">{{ description }}</p>
+                                </div>
+                                <div class="col-12 col-md-6 order-md-2 order-first">
+                                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                        <ol class="breadcrumb">
+                                            {% for item in breadcrumb_items %}
+                                                {% if item.url %}
+                                                    <li class="breadcrumb-item"><a href="{% url item.url %}">{{ item.name }}</a></li>
+                                                {% else %}
+                                                    <li class="breadcrumb-item active" aria-current="page">{{ item.name }}</li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="section">
+                            {% block content %}
+                            {% endblock %}
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer mt-auto clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2024 &copy; MotionPath</p>
+                </div>
+                <div class="float-end">
+                    {% comment %} ver que poner en el footer derecho {% endcomment %}
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="{% static 'assets/static/js/components/dark.js' %}"></script>
+    <script src="{% static 'assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/compiled/js/app.js' %}"></script>
+    {% block script %}{% endblock script %}
+</body>
+</html>

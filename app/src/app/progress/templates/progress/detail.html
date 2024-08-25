@@ -1,0 +1,40 @@
+{% extends "base/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Detalles del Progreso</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-lg">
+                <tbody>
+                    <tr>
+                        <td><strong>Email:</strong></td>
+                        <td>{{ object.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ejercicios:</strong></td>
+                        <td>{% for exercise in object.exercises.all %}{{ exercise.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peso:</strong></td>
+                        <td>{{ object.weight }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repeticiones:</strong></td>
+                        <td>{{ object.repetitions }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{% url 'progress_list' %}" class="btn btn-light-secondary me-1 mb-1">Continuar</a>
+            <a href="{% url 'progress_create' %}" class="btn btn-success me-1 mb-1">Crear otro</a>
+            <a href="{% url 'progress_update' pk=object.pk %}" class="btn btn-primary me-1 mb-1">Actualizar</a>
+            <a href="{% url 'progress_delete' pk=object.pk %}" class="btn btn-danger me-1 mb-1">Eliminar</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

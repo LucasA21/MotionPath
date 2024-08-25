@@ -1,0 +1,16 @@
+name: ${CONTAINER_NAME:?container name is not defined...}
+services:
+  database:
+    extends:
+      file: ./database/compose.yaml
+      service: database
+    env_file:
+      - ./.env
+  app:
+    extends:
+      file: ./app/compose.yaml
+      service: app
+    env_file:
+      - ./.env
+    depends_on: 
+      - database

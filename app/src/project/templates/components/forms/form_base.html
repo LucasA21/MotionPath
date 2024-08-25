@@ -1,0 +1,29 @@
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'assets/extensions/choices.js/public/assets/styles/choices.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/extensions/quill/quill.snow.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/extensions/quill/quill.bubble.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/extensions/summernote/summernote-lite.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/compiled/css/form-editor-summernote.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/extensions/rater-js/lib/style.css' %}">
+{% endblock link %}
+
+{% block form %}
+{% endblock form %}
+
+{% block script %}
+    <script src="{% static 'assets/extensions/choices.js/public/assets/scripts/choices.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/form-element-select.js' %}"></script>
+    <script src="{% static 'assets/extensions/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extensions/parsleyjs/parsley.min.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/parsley.js' %}"></script>
+    <script src="{% static 'assets/extensions/quill/quill.min.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/quill.js' %}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="{% static 'assets/static/js/pages/ckeditor.js' %}"></script>
+    <script src="{% static 'assets/extensions/summernote/summernote-lite.min.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/summernote.js' %}"></script>
+    <script src="{% static 'assets/extensions/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'assets/static/js/pages/tinymce.js' %}"></script>
+    <script src="{% static 'assets/extensions/rater-js/index.js?v=2' %}"></script>
+{% endblock script %}

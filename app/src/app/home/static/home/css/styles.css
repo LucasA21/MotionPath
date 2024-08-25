@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: url("../images/fondohome.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.navbar-nav {
+    margin: 0 auto; /* Centra los enlaces de la navbar */
+}
+
+.navbar-nav .nav-item {
+    margin: 0 15px; /* Ajusta el margen entre los enlaces */
+}
+
+.navbar-nav .nav-link, .social-links a {
+    color: white !important;
+    transition: color 0.3s;
+    margin-left: 30px;
+    padding-right: 42px;
+}
+
+.navbar-nav .nav-link:hover, .social-links a:hover {
+    color: #ff4500 !important;
+}
+
+.social-links a {
+    color: white; /* Añade espacio entre los íconos de redes sociales */
+}
+
+.navbar-brand img {
+    transition: filter 0.3s; /* Transición suave para el filtro de color */
+}
+
+.navbar-brand:hover img {
+    filter: invert(41%) sepia(81%) saturate(2274%) hue-rotate(340deg) brightness(94%) contrast(101%);
+    /* Aplica un filtro para cambiar el color a naranja */
+}
+
+.btn-secondary:hover {
+    background-color: #ff4500;
+    color: white;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+

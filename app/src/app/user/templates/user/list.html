@@ -1,0 +1,14 @@
+<!-- user/list.html -->
+{% extends "base/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listado de Usuarios</h3>
+    </div>
+    <div class="card-body">
+        <a href="{% url 'user_create' %}" class="btn btn-success mb-3">Crear Usuario</a>
+        <hr>
+        {% include 'components/datatable.html' with headers=headers rows=rows detail_url='user_detail' update_url='user_update' delete_url='user_delete' %}
+    </div>
+</div>
+{% endblock content %}

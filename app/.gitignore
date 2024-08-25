@@ -1,0 +1,11 @@
+node_modules
+
+**/**/__pycache__
+
+.env
+
+venv/
+env/
+
+src/dist/
+src/templates_modified/

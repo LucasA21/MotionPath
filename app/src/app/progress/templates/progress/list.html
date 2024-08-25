@@ -1,0 +1,13 @@
+{% extends "base/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listado de Progresos</h3>
+    </div>
+    <div class="card-body">
+        <a href="{% url 'progress_create' %}" class="btn btn-success">Crear progreso</a>
+        <hr>
+        {% include 'components/datatable.html' %}
+    </div>
+</div>
+{% endblock content %}

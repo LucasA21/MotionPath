@@ -1,0 +1,25 @@
+name: ${CONTAINER_NAME:?container name is not defined...}-postgres
+services: 
+  x-base: &x-base
+    container_name: ${CONTAINER_NAME:?container name is not defined...}-db
+    build: 
+      context: . 
+      target: database
+      dockerfile_inline: | 
+        FROM postgres:${POSTGRES_VERSION:-latest} as database
+        RUN localedef -i ${LOCALEDEF:-es_AR} -c -f UTF-8 -A /usr/share/locale/locale.alias ${LOCALEDEF:-es_AR}.UTF-8
+        ENV LANG ${LOCALEDEF:-es_AR}.utf8
+    restart: ${RESTART:-no}
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    volumes:
+      - ./docker/volumes/data:/var/lib/postgresql/data
+      - ./docker/volumes/backups:/backups
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  database:
+    <<: *x-base
+  dev:
+    <<: *x-base
+    env_file:
+      - ./.env

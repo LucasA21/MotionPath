@@ -1,0 +1,32 @@
+{% extends "base/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Detalles</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-lg">
+                <tbody>
+                    <tr>
+                        <td><strong>Email:</strong></td>
+                        <td>{{ object.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Verificado:</strong></td>
+                        <td>{{ object.is_verify }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{% url 'trainer_list' %}" class="btn btn-light-secondary me-1 mb-1">Continuar</a>
+            <a href="{% url 'trainer_create' %}" class="btn btn-success me-1 mb-1">Crear otro</a>
+            <a href="{% url 'trainer_update' pk=object.pk %}" class="btn btn-primary me-1 mb-1">Actualizar</a>
+            <a href="{% url 'trainer_delete' pk=object.pk %}" class="btn btn-danger me-1 mb-1">Eliminar</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

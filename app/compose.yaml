@@ -1,0 +1,21 @@
+name: ${CONTAINER_NAME:?container name is not defined...}-django
+services: 
+  x-base: &x-base
+    container_name: ${CONTAINER_NAME:?container name is not defined...}-app
+    build: 
+      context: . 
+      dockerfile: ./docker/dev.Dockerfile
+      target: final
+    restart: ${RESTART:-no}
+    ports:
+      - ${APP_PORT:-8000}:8000
+    volumes:
+      - ./src:/app:rw
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  app:
+    <<: *x-base
+  dev:
+    <<: *x-base
+    env_file:
+      - ./.env

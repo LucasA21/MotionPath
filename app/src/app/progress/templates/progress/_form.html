@@ -1,0 +1,49 @@
+{% extends "components/forms/form_base.html" %}
+{% load static %}
+
+{% block form %}
+<form class="form form-vertical" method="post">
+    {% csrf_token %}
+    <div class="form-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group{% if form.user.field.required %} mandatory{% endif %}">
+                    <label class="form-label" for="{{ form.user.id_for_label }}">{{ form.user.label }}</label>
+                    {{ form.user }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group{% if form.exercises.field.required %} mandatory{% endif %}">
+                    <label class="form-label" for="{{ form.exercises.id_for_label }}">{{ form.exercises.label }}</label>
+                    {{ form.exercises }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group{% if form.weight.field.required %} mandatory{% endif %}">
+                    <label class="form-label" for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+                    {{ form.weight }}
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group{% if form.repetitions.field.required %} mandatory{% endif %}">
+                    <label class="form-label" for="{{ form.repetitions.id_for_label }}">{{ form.repetitions.label }}</label>
+                    {{ form.repetitions }}
+                </div>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end">
+                {% if is_update %}
+                    <button type="submit" class="btn btn-primary me-1 mb-1">Actualizar</button>
+                    <a href="{% url 'progress_detail' pk=object.pk %}" class="btn btn-danger me-1 mb-1">Cancelar</a>
+                {% else %}
+                    <button type="submit" class="btn btn-success me-1 mb-1">Guardar</button>
+                    <a href="{% url 'progress_list' %}" class="btn btn-danger me-1 mb-1">Cancelar</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock form %}

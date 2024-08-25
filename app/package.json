@@ -1,0 +1,22 @@
+{
+  "name": "motion-path",
+  "version": "0.0.5",
+  "description": "Creación y gestion de rutinas",
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "cz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.0.11",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'assets/extensions/rater-js/lib/style.css' %}">
+{% endblock link %}
+
+<div id="rating-component">
+    <label for="rate">Calificación</label>
+    <div id="basic"></div>
+    <input type="hidden" id="basic" name="rate">
+</div>
+
+{% block script %}
+<script src="{% static 'assets/extensions/rater-js/index.js?v=2' %}"></script>
+<script src="{% static 'assets/static/js/pages/rater-js.js' %}"></script>
+{% endblock script %}

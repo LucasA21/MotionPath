@@ -1,0 +1,10 @@
+{
+    "conventionalCommits.scopes": [
+        "documentation",
+        "configuration",
+        "docker",
+        "backend",
+        "frontend",
+        "migration"
+    ]
+}

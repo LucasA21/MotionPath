@@ -1,0 +1,64 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Detalles
+            </h3>
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-lg">
+                    <tbody>
+                        <tr>
+                            <td><strong>Nombre:</strong></td>
+                            <td>{{ object.name }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Creador:</strong></td>
+                            <td>{{ object.user }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivel de Dificultad:</strong></td>
+                            <td>{{ object.difficulty_level }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de Rutina:</strong> </td>
+                            <td>
+                                {% for rutine_type in object.rutine_type.all %}
+                                    {{ rutine_type.name }}{% if not forloop.last %}<br><hr>{% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ejercicios:</strong> </td>
+                            <td>
+                                {% for exercise in object.rutine_exercises.all %}
+                                    {{ exercise.name }}{% if not forloop.last %}<br><hr>{% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Usuarios que la eligieron:</strong> </td>
+                            <td>
+                                {% for user in object.user_rutine.all %}
+                                    {{ user.email }}{% if not forloop.last %}<br><hr>{% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="col-12 d-flex justify-content-end">
+                <a href="{% url 'picked_rutine_list' %}" class="btn btn-light-secondary me-1 mb-1">Volver</a>
+                <a href="{% url 'rutine_delete_pick_one' pk=object.id %}" class="btn btn-danger me-1 mb-1">Sacar</a>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
